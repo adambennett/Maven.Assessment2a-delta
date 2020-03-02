@@ -11,6 +11,9 @@ public class StringArrayUtils {
      * @return an array with all elements between `startingIndex` and `endingIndex`
      */
     public static String[] getSubArray(String[] arrayToBeSpliced, int startingIndex, int endingIndex) {
+        if (startingIndex < 0 || endingIndex < 0) {
+            throw new IllegalArgumentException();
+        }
         int size = endingIndex - startingIndex;
         if (size > 0) {
             String[] newArr = new String[size];
@@ -40,6 +43,11 @@ public class StringArrayUtils {
             }
             return newArr;
         }
-        return new String[1];
+
+        if (startingIndex > arrayToBeSpliced.length - 1) {
+            throw new IllegalArgumentException();
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
